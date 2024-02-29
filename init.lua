@@ -164,7 +164,11 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move highlighted lines' }
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move highlighted lines' })
 
 -- Open Netrw
+<<<<<<< HEAD
 -- vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+=======
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+>>>>>>> a3adabb (Fix conflict with icons at the bottom of the file)
 
 -- Center screen on vertical movement
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = '<C-d> with center cursor' })
@@ -185,8 +189,11 @@ vim.keymap.set('n', '<leader>p', [["+p]], { desc = 'Paste from register' })
 vim.keymap.set('v', '<leader>p', [["+p]], { desc = 'Paste from register' })
 vim.keymap.set('n', '<leader>P', [["+P]], { desc = 'Paste from register' })
 
+<<<<<<< HEAD
 vim.keymap.set('n', '<localleader>p', '"_dP', { desc = 'Paste from register' })
 
+=======
+>>>>>>> a3adabb (Fix conflict with icons at the bottom of the file)
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -689,12 +696,15 @@ require('lazy').setup({
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         javascript = { { 'prettierd', 'prettier' } },
+<<<<<<< HEAD
         javascriptreact = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
         json = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
         css = { { 'prettierd', 'prettier' } },
+=======
+>>>>>>> a3adabb (Fix conflict with icons at the bottom of the file)
       },
     },
   },
@@ -922,7 +932,11 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+<<<<<<< HEAD
   { import = 'custom.plugins' },
+=======
+   { import = 'custom.plugins' },
+>>>>>>> a3adabb (Fix conflict with icons at the bottom of the file)
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

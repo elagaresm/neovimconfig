@@ -4,6 +4,7 @@
 -- See the kickstart.nvim README for more information
 return {
   'github/copilot.vim',
+<<<<<<< HEAD
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -14,4 +15,6 @@ return {
       vim.keymap.set('n', '<leader>-', oil.toggle_float, { desc = 'Toggle parent directory in floating window' })
     end,
   },
+=======
+>>>>>>> a3adabb (Fix conflict with icons at the bottom of the file)
 }
