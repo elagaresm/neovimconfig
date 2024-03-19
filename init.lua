@@ -154,6 +154,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Disable wrap
+vim.opt.wrap = false
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -813,8 +816,13 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
 
+<<<<<<< HEAD
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+=======
+      -- You can configure highlights by doing something like
+      -- vim.cmd.hi 'Comment gui=none'
+>>>>>>> a69a7e7 (set: wrap to false)
     end,
   },
 
