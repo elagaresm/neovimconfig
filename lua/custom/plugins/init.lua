@@ -37,4 +37,19 @@ return {
       vim.keymap.set('n', '<leader>-', oil.toggle_float, { desc = 'Toggle parent directory in floating window' })
     end,
   },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    init = function()
+      local nordic = require 'nordic'
+      nordic.setup {
+        bold_keywords = true,
+        italic_comments = false,
+        transparent_bg = true,
+      }
+      nordic.load()
+      vim.cmd.colorscheme 'nordic'
+    end,
+  },
 }
