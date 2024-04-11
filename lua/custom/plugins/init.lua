@@ -10,17 +10,18 @@ return {
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-g>', function()
         return vim.fn['codeium#Accept']()
-      end, { expr = true, silent = true })
+      end, { expr = true, silent = true, desc = 'Codeium: Accept' })
       vim.keymap.set('i', '<c-;>', function()
         return vim.fn['codeium#CycleCompletions'](1)
-      end, { expr = true, silent = true })
+      end, { expr = true, silent = true, desc = 'Codeium: Cycle completions +1' })
       vim.keymap.set('i', '<c-,>', function()
         return vim.fn['codeium#CycleCompletions'](-1)
-      end, { expr = true, silent = true })
+      end, { expr = true, silent = true, desc = 'Codeium: Cycle completions -1' })
       vim.keymap.set('i', '<c-x>', function()
         return vim.fn['codeium#Clear']()
-      end, { expr = true, silent = true })
+      end, { expr = true, silent = true, desc = 'Codeium: Clear' })
     end,
+    enabled = false,
   },
   {
     'stevearc/oil.nvim',
