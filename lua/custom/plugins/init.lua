@@ -3,7 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  { 'github/copilot.vim', enabled = false },
+  { 'github/copilot.vim' },
   {
     'Exafunction/codeium.vim',
     config = function()
@@ -38,18 +38,8 @@ return {
     end,
   },
   {
-    'AlexvZyl/nordic.nvim',
-    lazy = false,
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      local nordic = require 'nordic'
-      nordic.setup {
-        bold_keywords = true,
-        italic_comments = false,
-        transparent_bg = true,
-      }
-      nordic.load()
-      vim.cmd.colorscheme 'nordic'
-    end,
+    'm4xshen/hardtime.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    opts = {},
   },
 }

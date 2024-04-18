@@ -166,6 +166,9 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move highlighted lines' }
 -- Open Netrw
 -- vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
+-- Delete with C-BACKSPACE
+vim.keymap.set('i', '<C-h>', '<C-w>', { desc = 'Delete previous word' })
+
 -- Center screen on vertical movement
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = '<C-d> with center cursor' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = '<C-u> with center cursor' })
@@ -233,6 +236,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Print the results of the file C:\Users\Enmanuel\Documents\Projects\powershell\DetectTheme.ps1 everytime Neovime is started
+
+--[[ vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Print the results of the file C:\\Users\\Enmanuel\\Documents\\Projects\\powershell\\DetectTheme.ps1 everytime Neovime is started',
+  group = vim.api.nvim_create_augroup('kickstart-print-theme', { clear = true }),
+  callback = function()
+    -- Save the outputed value to a variable
+    local theme = vim.fn.systemlist 'powershell.exe -File C:\\Users\\Enmanuel\\Documents\\Projects\\powershell\\DetectTheme.ps1'
+    -- Set the background color to the outputed value with ^M at the end
+    -- Remove ^M from the outputed value
+    vim.opt.background = theme[1]:gsub('\r', '')
+  end,
+}) ]]
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -719,12 +736,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          {
-            'rafamadriz/friendly-snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
-          },
+          -- {
+          --   'rafamadriz/friendly-snippets',
+          --   config = function()
+          --     require('luasnip.loaders.from_vscode').lazy_load()
+          --   end,
+          -- },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -794,14 +811,18 @@ require('lazy').setup({
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
+          ['<C-l>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
+            else
+              fallback()
             end
           end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
+          ['<C-h>'] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
+            else
+              fallback()
             end
           end, { 'i', 's' }),
 
@@ -829,12 +850,15 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       require('tokyonight').setup {
+        style = 'night',
+        light_style = 'day',
         styles = {
           comments = { italic = false },
           keywords = { italic = false },
         },
       }
-      -- vim.cmd.colorscheme 'tokyonight-night'
+      vim.opt.background = 'light'
+      vim.cmd.colorscheme 'tokyonight'
 
       -- You can configure highlights by doing something like
       -- vim.cmd.hi 'Comment gui=none'
