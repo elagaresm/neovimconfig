@@ -857,7 +857,7 @@ require('lazy').setup({
           keywords = { italic = false },
         },
       }
-      vim.opt.background = 'light'
+      -- vim.opt.background = 'light'
       vim.cmd.colorscheme 'tokyonight'
 
       -- You can configure highlights by doing something like

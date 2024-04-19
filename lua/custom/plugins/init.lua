@@ -3,7 +3,15 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  'vimpostor/vim-lumen',
   { 'github/copilot.vim' },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    --     -- this is equalent to setup({}) function
+  },
   {
     'Exafunction/codeium.vim',
     config = function()
@@ -33,13 +41,8 @@ return {
           show_hidden = true,
         },
       }
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+      -- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
       vim.keymap.set('n', '<leader>-', oil.toggle_float, { desc = 'Toggle parent directory in floating window' })
     end,
-  },
-  {
-    'm4xshen/hardtime.nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
-    opts = {},
   },
 }
