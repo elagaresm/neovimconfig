@@ -3,15 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  -- 'vimpostor/vim-lumen',
-  -- { 'github/copilot.vim' },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true,
-    -- use opts = {} for passing setup options
-    --     -- this is equalent to setup({}) function
-  },
   {
     'Exafunction/codeium.vim',
     config = function()
@@ -46,36 +37,36 @@ return {
     end,
   },
   {
-    "scottmckendry/cyberdream.nvim",
+    'scottmckendry/cyberdream.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      require("cyberdream").setup({
+      require('cyberdream').setup {
         -- Recommended - see "Configuring" below for more config options
         transparent = true,
         italic_comments = false,
         hide_fillchars = true,
         borderless_telescope = true,
         terminal_colors = true,
-      })
-      vim.cmd("colorscheme cyberdream") -- set the colorscheme
+      }
+      vim.cmd 'colorscheme cyberdream' -- set the colorscheme
     end,
   },
   {
     {
       'nvim-lualine/lualine.nvim',
-      event = "VeryLazy",
+      event = 'VeryLazy',
       -- dependencies = { 'nvim-tree/nvim-web-devicons' }
       config = function()
-        local cyberdream = require("lualine.themes.cyberdream")
-        require("lualine").setup({
+        local cyberdream = require 'lualine.themes.cyberdream'
+        require('lualine').setup {
           -- ... other config
           options = {
-            theme = "cyberdream",
+            theme = 'cyberdream',
           },
           -- ... other config
-        })
-      end
-    }
+        }
+      end,
+    },
   },
 }
