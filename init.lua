@@ -237,20 +237,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Print the results of the file C:\Users\Enmanuel\Documents\Projects\powershell\DetectTheme.ps1 everytime Neovime is started
-
---[[ vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Print the results of the file C:\\Users\\Enmanuel\\Documents\\Projects\\powershell\\DetectTheme.ps1 everytime Neovime is started',
-  group = vim.api.nvim_create_augroup('kickstart-print-theme', { clear = true }),
-  callback = function()
-    -- Save the outputed value to a variable
-    local theme = vim.fn.systemlist 'powershell.exe -File C:\\Users\\Enmanuel\\Documents\\Projects\\powershell\\DetectTheme.ps1'
-    -- Set the background color to the outputed value with ^M at the end
-    -- Remove ^M from the outputed value
-    vim.opt.background = theme[1]:gsub('\r', '')
-  end,
-}) ]]
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -845,6 +831,7 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    enabled = false,
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
@@ -889,17 +876,21 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
+
+      -- local statusline = require 'mini.statusline'
+
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
